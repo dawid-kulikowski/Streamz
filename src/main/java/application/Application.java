@@ -1,6 +1,10 @@
 package application;
 
+import java.nio.charset.Charset;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class Application {
@@ -21,12 +25,19 @@ public class Application {
 
         System.out.println(Streamz.employeeList.toString());
 
-        List<Employee> filteredList = Streamz.employeeList.stream()
-                .filter(employee -> employee.getAge()>30)
+        List<String> filteredList = Streamz.employeeList.stream()
+                .map(employee -> employee.getFirstName().concat(" Hi"))
+                .sorted()
+                .limit(3)
                 .collect(Collectors.toList());
 
         System.out.println(filteredList.toString());
 
+
+        //Reverse String
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        String reversed = new StringBuilder(alphabet).reverse().toString();
+        System.out.println(reversed);
     }
 
 
